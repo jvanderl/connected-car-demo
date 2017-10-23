@@ -15,4 +15,7 @@ The on-board Car Safety System measures the actual distance to the car in front 
 ![Car Safety System](schema.png)
 
 ## Arduino Code
-The Source code used for the car safety system is [here](iot-car.ino).
+The Source code used for the car safety system can be found [here](iot-car.ino).
+
+## Finished System
+![Car Safety System](car-safety-system.jpg)
