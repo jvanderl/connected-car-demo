@@ -18,4 +18,4 @@ The on-board Car Safety System measures the actual distance to the car in front 
 The Source code used for the car safety system can be found [here](iot-car.ino).
 
 ## Finished System
-![Car Safety System](car-safety-system.jpg)
+![Car Safety System](car-safety-system.png)
