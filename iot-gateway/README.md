@@ -41,3 +41,7 @@ To install the Mosquitto MQTT broker on the C.H.I.P. you can follow [these instr
 ### 6. Run the IoT Gateway executable on the C.H.I.P.
 You can use ssh command from another PC to start the IoT gateway:
 ssh chip@[chip_ip] ~/iotgtw
+
+## Stick the IoT Gateway on the Robot Car
+I first got a [2-port USB Power bank](https://www.conrad.nl/nl/denver-10000-mah-powerbank-2-usb-poorten-pba-10001-1526214.html), and then put the C.H.I.P. on top of that so it looks something like this:
+![IoT Gateway on top of the powerbank](iot-gateway.png)
