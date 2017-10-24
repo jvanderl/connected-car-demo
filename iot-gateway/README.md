@@ -17,7 +17,12 @@ Instructions can be found [here](ps://www.dexterindustries.com/howto/connect-to-
 To install the Mosquitto MQTT broker on the C.H.I.P. you can follow [these instructions](https://medium.com/@rossdanderson/installing-mosquitto-broker-on-debian-2a341fe88981).
 
 ### 4. Generate IoT Gateway flow in Project Flogo
+The aim here is to craeate a single executable that will run the integration logic defined in Flogo. No need to install anything on the C.H.I.P., just use your PC to generate the executable.
 
+There are two ways of doing this:
+
+ - Via Flogo Web - Instructions [here](flogo-web)
+ - Via Flogo CLI - Instructions [here](flogo-cli)
  - Install Flogo CLI or Flogo Web designer using instructions that can be found [here](https://github.com/TIBCOSoftware/flogo).
  - Create a new application or import [this flow](iotgtw.json).
  - Import my custom flogo activities:
