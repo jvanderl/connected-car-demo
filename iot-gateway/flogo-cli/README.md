@@ -53,6 +53,8 @@ Make the changes effective
  `cd iotgtw`
  * Build the app optimized for the C.H.I.P.'s ARM processor
  `env GOARM=7 GOARCH=arm GOOS=linux flogo build -o`
-
-	This will give you **iotgtw-linux-arm** executable in the **bin/** folder
+ * This will give you **iotgtw-linux-arm** executable in the **bin/** folder
+ * Rename the executable to **iotgtw**
+ `cd bin`
+ `mv iotgtw-linux-arm iotgtw`
  

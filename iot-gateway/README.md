@@ -1,7 +1,11 @@
 ﻿# IoT Gateway
 The IoT Gateway receives distance and safety state from the Car Safety System and passes this on to the Central Logic.
-It runs an Mosquitto MQTT broker to communicatie with the Car Safety System and a [Project Flogo](http://www.flogo.io/) Process for the integration logic between car and central.
+It runs an Mosquitto MQTT broker to communicatie with the Car Safety System and a [Project Flogo](http://www.flogo.io/) app for the integration logic between car and central.
 All of this on a [C.H.I.P. computer](https://getchip.com/pages/chip) which is a $9  ARM based computer capable of running  a linux kernel, much like a Raspberry Pi.
+
+## Stick the IoT Gateway on the Robot Car
+I first got a [2-port USB Power bank](https://www.conrad.nl/nl/denver-10000-mah-powerbank-2-usb-poorten-pba-10001-1526214.html), and then put the C.H.I.P. on top of that so it looks something like this:
+![IoT Gateway on top of the powerbank](iot-gateway.png)
 
 ## Setup The IoT Gateway on the C.H.I.P.
 
@@ -16,37 +20,19 @@ Instructions can be found [here](ps://www.dexterindustries.com/howto/connect-to-
 ### 3. Install Mosquitto MQTT broker
 To install the Mosquitto MQTT broker on the C.H.I.P. you can follow [these instructions](https://medium.com/@rossdanderson/installing-mosquitto-broker-on-debian-2a341fe88981).
 
-### 4. Generate IoT Gateway flow in Project Flogo
+### 4. Generate IoT Gateway app in Project Flogo
 The aim here is to craeate a single executable that will run the integration logic defined in Flogo. No need to install anything on the C.H.I.P., just use your PC to generate the executable.
 
 There are two ways of doing this:
 
- - Via Flogo Web - Instructions [here](flogo-web)
- - Via Flogo CLI - Instructions [here](flogo-cli)
- - Install Flogo CLI or Flogo Web designer using instructions that can be found [here](https://github.com/TIBCOSoftware/flogo).
- - Create a new application or import [this flow](iotgtw.json).
- - Import my custom flogo activities:
-	 - [Combine](https://github.com/jvanderl/flogo-components/tree/master/activity/combine)
-	 - [Send MQTT](https://github.com/jvanderl/flogo-components/tree/master/activity/mqtt)
-	 - [Receive MQTT](https://github.com/jvanderl/flogo-components/tree/master/trigger/mqtt2)
-	 - [Split Path](https://github.com/jvanderl/flogo-components/tree/master/activity/splitpath)
-	 - [Get JSON Elements](https://github.com/jvanderl/flogo-components/tree/master/activity/getjson)
-	 - [State Change](https://github.com/jvanderl/flogo-components/tree/master/activity/statechange)
-	 - [Send Kafka](https://github.com/jvanderl/flogo-components/tree/master/activity/kafka)
-	 - [Filter Data](https://github.com/jvanderl/flogo-components/tree/master/activity/filter)
-	 - [Throttle](https://github.com/jvanderl/flogo-components/tree/master/activity/throttle)
-	 - [Send eFTL](https://github.com/jvanderl/flogo-components/tree/master/activity/eftl)
- - Build the Project for ARM processor. Name it "iotgtw" and place it in a temporary directory
- - Make "iotgtw" executable (chmod +x iotgtw)
+ - Via Flogo Web - Complete instructions can be found [here](flogo-web)
+ - Via Flogo CLI - Complete instructions can be found [here](flogo-cli)
  
 ### 5. Copy the IoT Gateway executable to the C.H.I.P. 
  You can use ssh copy to get the executable on the machine:
- scp ./iotgtw chip@[chip_ip]:~/iotgtw
+ `scp ./iotgtw chip@[chip_ip]:~/iotgtw`
 
 ### 6. Run the IoT Gateway executable on the C.H.I.P.
 You can use ssh command from another PC to start the IoT gateway:
-ssh chip@[chip_ip] ~/iotgtw
+`ssh chip@[chip_ip] ~/iotgtw`
 
-## Stick the IoT Gateway on the Robot Car
-I first got a [2-port USB Power bank](https://www.conrad.nl/nl/denver-10000-mah-powerbank-2-usb-poorten-pba-10001-1526214.html), and then put the C.H.I.P. on top of that so it looks something like this:
-![IoT Gateway on top of the powerbank](iot-gateway.png)
