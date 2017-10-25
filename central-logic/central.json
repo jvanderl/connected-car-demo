@@ -1,0 +1,1115 @@
+{
+  "name": "IoT Central Logic",
+  "type": "flogo:app",
+  "version": "0.0.1",
+  "description": "Centrally handling all car safety logic",
+  "triggers": [
+    {
+      "name": "Receive Kafka Message",
+      "ref": "github.com/jvanderl/flogo-components/trigger/kafka",
+      "description": "Kafka Topic Subscriber",
+      "settings": {
+        "server": "10.10.1.50:9092",
+        "configid": "InsuranceCo"
+      },
+      "id": "receive_kafka_message",
+      "handlers": [
+        {
+          "settings": {
+            "topic": "test",
+            "partition": "0"
+          },
+          "actionId": "insurance_company"
+        }
+      ]
+    },
+    {
+      "name": "Receive eFTL Message",
+      "ref": "github.com/jvanderl/flogo-components/trigger/eftl",
+      "description": "eFTL Subscriber",
+      "settings": {
+        "server": "10.10.1.50:9291",
+        "channel": "/channel",
+        "user": "user",
+        "password": "password",
+        "secure": "true",
+        "certificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV6ekNDQTdlZ0F3SUJBZ0lKQUlKU2RCd2QzZjVUTUEwR0NTcUdTSWIzRFFFQkJRVUFNSUdhTVFzd0NRWUQKVlFRR0V3Sk9UREVMTUFrR0ExVUVDQk1DV2tneEVqQVFCZ05WQkFjVENWSnZkSFJsY21SaGJURVhNQlVHQTFVRQpDaE1PVkVsQ1EwOGdVMjltZEhkaGNtVXhEVEFMQmdOVkJBc1RCRk5EVGt3eEh6QWRCZ05WQkFNVEZrcGhibk10ClRXRmpRbTl2YXkxUWNtOHViRzlqWVd3eElUQWZCZ2txaGtpRzl3MEJDUUVXRW1wMllXNWtaWEpzUUhScFltTnYKTG1OdmJUQWVGdzB4TnpBMU1Ea3lNREUzTWpkYUZ3MHhPREExTURreU1ERTNNamRhTUlHYU1Rc3dDUVlEVlFRRwpFd0pPVERFTE1Ba0dBMVVFQ0JNQ1drZ3hFakFRQmdOVkJBY1RDVkp2ZEhSbGNtUmhiVEVYTUJVR0ExVUVDaE1PClZFbENRMDhnVTI5bWRIZGhjbVV4RFRBTEJnTlZCQXNUQkZORFRrd3hIekFkQmdOVkJBTVRGa3BoYm5NdFRXRmoKUW05dmF5MVFjbTh1Ykc5allXd3hJVEFmQmdrcWhraUc5dzBCQ1FFV0VtcDJZVzVrWlhKc1FIUnBZbU52TG1OdgpiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFOM1lKa1lWY3ppNlJ3T2piZmt3CjNmOVNxT3pYKys1MGRGTjcyTFU4ZHpiTGRoM29BVFkrY3pHZ1RlbkF4akJsNm9zM09aS1ZYaE85OHlDSzd5NzEKeWpEWE5zYzJHZ2ZnbGwvUVJLb3VXcnRCazAvV3BUVUo1MnZZZzdjeXgxeUFyWmZwWE5EVS9TSnhJYlpxODRSSgpXTDhlUnJsYlE1ZEFMZW1NSFZDM1BYWkZuUUFCTU1ON3JVaHk5UFJSVVNYUFp2TTZWT0ZGOHc3MUJlSXZXZW1XCmV1QTJnRSsvdGdRTE9JckJBZlJnUFkxMUp0ZjBqY0NoMDZ1VGJrYWpHd0hkc3hNQmwzbkhyRktDdFhrSFJ4NWEKd2pCbnYwMlhOT2lYa1hpcU5pUmNpSUNEemlwR09kMCtJc01TU29CWnZEMkNxMnExRUQ5Q0NlQVBianN3bXM5RQpibWNDQXdFQUFhT0NBUlF3Z2dFUU1CMEdBMVVkRGdRV0JCVGlqaVFucFF5NHN2RElFRUNMM0JTMlk5cnZ2RENCCnp3WURWUjBqQklISE1JSEVnQlRpamlRbnBReTRzdkRJRUVDTDNCUzJZOXJ2dktHQm9LU0JuVENCbWpFTE1Ba0cKQTFVRUJoTUNUa3d4Q3pBSkJnTlZCQWdUQWxwSU1SSXdFQVlEVlFRSEV3bFNiM1IwWlhKa1lXMHhGekFWQmdOVgpCQW9URGxSSlFrTlBJRk52Wm5SM1lYSmxNUTB3Q3dZRFZRUUxFd1JUUTA1TU1SOHdIUVlEVlFRREV4WktZVzV6CkxVMWhZMEp2YjJzdFVISnZMbXh2WTJGc01TRXdId1lKS29aSWh2Y05BUWtCRmhKcWRtRnVaR1Z5YkVCMGFXSmoKYnk1amIyMkNDUUNDVW5RY0hkMytVekFNQmdOVkhSTUVCVEFEQVFIL01BOEdBMVVkRVFRSU1BYUhCQW9LQVRJdwpEUVlKS29aSWh2Y05BUUVGQlFBRGdnRUJBTW5GZUN2djhwUnN6RUZyS295N1VRdEZCTHJlb09qMFptdFVlT1ZNCllxcGxhWGdnZE9rbEtHY0ZQM29jS3N3S3RWejNCZ3BxdjEwNm44Z3RDT1RuY3JZcG1aNDFQN3VBaXF4dTVnRGsKaWF4aHh4NjdxU1I5eXJ6R29aUjhNaVZEamF3ejNtMHZDbzNDQjljcHV0WVpYU055NjZIMlozb2pXQkJZTnhrVApkc2dTV1pIbzhZRVkxelErWXJ6M3lmNHJrQXJXREV1dlUxRk9ZaEc2M0oyRWN6RHptRXp1RHozaCtrZGtQTEhrCnBFNFhlY29tUXBhbEpGd3VSYndYUnUzNnpiWGVxUjRYOGNRRUs0ZmlDTWxjczROczZGbzJhUDkwTmFzelowSFoKUkIraVlON0p4Y3hsRTN5Y0Z0T3BWMDFRMU9zUzM1Q1V6cWVERzRRdVhWQnAxMGc9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+      },
+      "id": "receive_e_ftl_message",
+      "handlers": [
+        {
+          "settings": {
+            "destination": "flogo"
+          },
+          "actionId": "car_safety_central"
+        }
+      ]
+    },
+    {
+      "name": "Receive HTTP Message",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/trigger/rest",
+      "description": "Simple REST Trigger",
+      "settings": {
+        "port": "19393"
+      },
+      "id": "receive_http_message",
+      "handlers": [
+        {
+          "settings": {
+            "method": "POST",
+            "path": "/condition",
+            "autoIdReply": "true",
+            "useReplyHandler": "true"
+          },
+          "actionId": "handle_road_conditions"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "Insurance Company",
+      "data": {
+        "flow": {
+          "type": 1,
+          "attributes": [],
+          "rootTask": {
+            "id": 1,
+            "type": 1,
+            "tasks": [
+              {
+                "id": 2,
+                "name": "Split Message",
+                "description": "Splits a path into separate parts",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-splitpath",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/splitpath",
+                "attributes": [
+                  {
+                    "name": "input",
+                    "value": null,
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "delimiter",
+                    "value": " ",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "fixedpath",
+                    "value": "Device",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.message}",
+                    "mapTo": "input"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "name": "Strip Colons",
+                "description": "finds and replaces characters in up to 8 strings",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-replace",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/replace",
+                "attributes": [
+                  {
+                    "name": "find",
+                    "value": ":",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "replace",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input1",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input2",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input3",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input4",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input5",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input6",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input7",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input8",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A2.part5}",
+                    "mapTo": "input1"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "name": "Create Safety Key",
+                "description": "Combines separate parts into a single string",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-combine",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/combine",
+                "attributes": [
+                  {
+                    "name": "delimiter",
+                    "value": ":",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "prefix",
+                    "value": "car",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "suffix",
+                    "value": "safety",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part1",
+                    "value": null,
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part2",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part3",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part4",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part5",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part6",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part7",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part8",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A3.output1}",
+                    "mapTo": "part1"
+                  }
+                ]
+              },
+              {
+                "id": 5,
+                "name": "Store Safety",
+                "description": "Interacts with a Redis keyspace",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-redis",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/redis",
+                "attributes": [
+                  {
+                    "name": "server",
+                    "value": "10.10.1.50:6379",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "password",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "database",
+                    "value": 0,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "operation",
+                    "value": "SET",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "key",
+                    "value": null,
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "value",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A4.result}",
+                    "mapTo": "key"
+                  },
+                  {
+                    "type": 1,
+                    "value": "{A2.part1}",
+                    "mapTo": "value"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": 1,
+                "from": 2,
+                "to": 3,
+                "type": 0
+              },
+              {
+                "id": 2,
+                "from": 3,
+                "to": 4,
+                "type": 0
+              },
+              {
+                "id": 3,
+                "from": 4,
+                "to": 5,
+                "type": 0
+              }
+            ],
+            "attributes": []
+          }
+        }
+      },
+      "id": "insurance_company",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow"
+    },
+    {
+      "name": "Car Safety Central",
+      "data": {
+        "flow": {
+          "type": 1,
+          "attributes": [],
+          "rootTask": {
+            "id": 1,
+            "type": 1,
+            "tasks": [
+              {
+                "id": 2,
+                "name": "Get JSON",
+                "description": "Retrieves specific elements from a JSON structure",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-getjson",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/getjson",
+                "attributes": [
+                  {
+                    "name": "input",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name1",
+                    "value": "deviceID",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name2",
+                    "value": "distance",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name3",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name4",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name5",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name6",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name7",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "name8",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.message}",
+                    "mapTo": "input"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "name": "Strip Colons",
+                "description": "finds and replaces characters in up to 8 strings",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-replace",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/replace",
+                "attributes": [
+                  {
+                    "name": "find",
+                    "value": ":",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "replace",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input1",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input2",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input3",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input4",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input5",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input6",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input7",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "input8",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A2.value1}",
+                    "mapTo": "input1"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "name": "Create Dist Key",
+                "description": "Combines separate parts into a single string",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-combine",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/combine",
+                "attributes": [
+                  {
+                    "name": "delimiter",
+                    "value": ":",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "prefix",
+                    "value": "car",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "suffix",
+                    "value": "distance",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part1",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part2",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part3",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part4",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part5",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part6",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part7",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part8",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A3.output1}",
+                    "mapTo": "part1"
+                  }
+                ]
+              },
+              {
+                "id": 5,
+                "name": "Store Dist",
+                "description": "Interacts with a Redis keyspace",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-redis",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/redis",
+                "attributes": [
+                  {
+                    "name": "server",
+                    "value": "10.10.1.50:6379",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "password",
+                    "value": null,
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "database",
+                    "value": 0,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "operation",
+                    "value": "SET",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "key",
+                    "value": null,
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "value",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A4.result}",
+                    "mapTo": "key"
+                  },
+                  {
+                    "type": 1,
+                    "value": "{A2.value2}",
+                    "mapTo": "value"
+                  }
+                ]
+              },
+              {
+                "id": 6,
+                "name": "Create Device Key",
+                "description": "Combines separate parts into a single string",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-combine",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/combine",
+                "attributes": [
+                  {
+                    "name": "delimiter",
+                    "value": ":",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "prefix",
+                    "value": "car",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "suffix",
+                    "value": "address",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part1",
+                    "value": "5CCF7F942BCB",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part2",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part3",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part4",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part5",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part6",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part7",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part8",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A3.output1}",
+                    "mapTo": "part1"
+                  }
+                ]
+              },
+              {
+                "id": 7,
+                "name": "Store ID",
+                "description": "Interacts with a Redis keyspace",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-redis",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/redis",
+                "attributes": [
+                  {
+                    "name": "server",
+                    "value": "10.10.1.50:6379",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "password",
+                    "value": null,
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "database",
+                    "value": 0,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "operation",
+                    "value": "SET",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "key",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "value",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A6.result}",
+                    "mapTo": "key"
+                  },
+                  {
+                    "type": 1,
+                    "value": "{A2.value1}",
+                    "mapTo": "value"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": 1,
+                "from": 2,
+                "to": 3,
+                "type": 0
+              },
+              {
+                "id": 2,
+                "from": 3,
+                "to": 4,
+                "type": 0
+              },
+              {
+                "id": 3,
+                "from": 4,
+                "to": 5,
+                "type": 0
+              },
+              {
+                "id": 4,
+                "from": 5,
+                "to": 6,
+                "type": 0
+              },
+              {
+                "id": 5,
+                "from": 6,
+                "to": 7,
+                "type": 0
+              }
+            ],
+            "attributes": []
+          }
+        }
+      },
+      "id": "car_safety_central",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow"
+    },
+    {
+      "name": "Handle Road Conditions",
+      "data": {
+        "flow": {
+          "type": 1,
+          "attributes": [],
+          "rootTask": {
+            "id": 1,
+            "type": 1,
+            "tasks": [
+              {
+                "id": 2,
+                "name": "Combine",
+                "description": "Combines separate parts into a single string",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-combine",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/combine",
+                "attributes": [
+                  {
+                    "name": "delimiter",
+                    "value": ":",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "prefix",
+                    "value": "condition",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "suffix",
+                    "value": "factor",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part1",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part2",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part3",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part4",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part5",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part6",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part7",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "part8",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{T.content}",
+                    "mapTo": "part1"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "name": "Redis",
+                "description": "Interacts with a Redis keyspace",
+                "type": 1,
+                "activityType": "github-com-jvanderl-flogo-components-activity-redis",
+                "activityRef": "github.com/jvanderl/flogo-components/activity/redis",
+                "attributes": [
+                  {
+                    "name": "server",
+                    "value": "10.10.1.50:6379",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "password",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "database",
+                    "value": 0,
+                    "required": false,
+                    "type": "integer"
+                  },
+                  {
+                    "name": "operation",
+                    "value": "GET",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "key",
+                    "value": null,
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "value",
+                    "value": "",
+                    "required": false,
+                    "type": "string"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A2.result}",
+                    "mapTo": "key"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "name": "Invoke REST Service",
+                "description": "Simple REST Activity",
+                "type": 1,
+                "activityType": "github-com-tibco-software-flogo-contrib-activity-rest",
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/rest",
+                "attributes": [
+                  {
+                    "name": "method",
+                    "value": "POST",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "uri",
+                    "value": "http://10.10.1.40:19292/device/distfactor",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "pathParams",
+                    "value": null,
+                    "required": false,
+                    "type": "params"
+                  },
+                  {
+                    "name": "queryParams",
+                    "value": {
+                      "deviceID": "60:01:94:2B:D0:FE"
+                    },
+                    "required": false,
+                    "type": "params"
+                  },
+                  {
+                    "name": "content",
+                    "value": null,
+                    "required": false,
+                    "type": "any"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A3.result}",
+                    "mapTo": "content"
+                  }
+                ]
+              },
+              {
+                "id": 5,
+                "name": "Invoke REST Service (2)",
+                "description": "Simple REST Activity",
+                "type": 1,
+                "activityType": "github-com-tibco-software-flogo-contrib-activity-rest",
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/rest",
+                "attributes": [
+                  {
+                    "name": "method",
+                    "value": "POST",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "uri",
+                    "value": "http://10.10.1.41:19292/device/distfactor",
+                    "required": true,
+                    "type": "string"
+                  },
+                  {
+                    "name": "pathParams",
+                    "value": null,
+                    "required": false,
+                    "type": "params"
+                  },
+                  {
+                    "name": "queryParams",
+                    "value": {
+                      "deviceID": "60:01:94:2B:CB:99"
+                    },
+                    "required": false,
+                    "type": "params"
+                  },
+                  {
+                    "name": "content",
+                    "value": null,
+                    "required": false,
+                    "type": "any"
+                  }
+                ],
+                "inputMappings": [
+                  {
+                    "type": 1,
+                    "value": "{A3.result}",
+                    "mapTo": "content"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": 1,
+                "from": 2,
+                "to": 3,
+                "type": 0
+              },
+              {
+                "id": 2,
+                "from": 3,
+                "to": 4,
+                "type": 0
+              },
+              {
+                "id": 3,
+                "from": 3,
+                "to": 5,
+                "type": 1,
+                "value": "true"
+              }
+            ],
+            "attributes": []
+          }
+        }
+      },
+      "id": "handle_road_conditions",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow"
+    }
+  ]
+}

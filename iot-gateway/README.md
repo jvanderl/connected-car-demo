@@ -15,7 +15,7 @@ Instructions can be found [here](http://flash.getchip.com/img/4).
 
 ### 2. Connect the C.H.I.P. to WiFi
 You need to setup connection to an available wireless network.
-Instructions can be found [here](ps://www.dexterindustries.com/howto/connect-to-chip-headless-mode/).
+Instructions can be found [here](https://www.dexterindustries.com/howto/connect-to-chip-headless-mode/).
 
 ### 3. Install Mosquitto MQTT broker
 To install the Mosquitto MQTT broker on the C.H.I.P. you can follow [these instructions](https://medium.com/@rossdanderson/installing-mosquitto-broker-on-debian-2a341fe88981).
