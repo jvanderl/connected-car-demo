@@ -1,5 +1,6 @@
 ﻿# Creating the IoT Gateway using Flogo Web
 This section describes how to install the Flogo Web designer from scratch and then build the IoT Gateway application.
+
 ## Install Flogo Web
 For this tutorial I will be running my Flogo design environment on Ubuntu, but the steps for all OS'es are similar. You can always find a complete description [here](https://github.com/TIBCOSoftware/flogo).
 Below more of a qiuck guide:
@@ -9,9 +10,12 @@ Below more of a qiuck guide:
 
  2. Get the latest Docker image for Flogo Web
  `docker pull flogo/flogo-docker`
- 
- 3. Start Flogo Web
+ ## Start Flogo Web
+ 3. In a terminal
+
  `docker run -it -p 3303:3303 flogo/flogo-docker eula-accept`
+ 
+ ## Create the IoT Gateway App
  
  4. Open a browser and point it to http://localhost:3303
  5. Install my custom components.
@@ -53,13 +57,27 @@ Below more of a qiuck guide:
 * Click on the <kbd>**Import**</kbd> button on the Flogo main screen
 * Select the **iotgtw.json** file from the temporary location and open it.
 
- 7. Build the IoT Gateway app in flogo web:
+ 7. Adjust the configuration parameters the IoT Gateway app
+ * Select app **Flogo IoT Gateway**
+ * Select flow **CentralToCar**
+	 * In **Send MQTT Message**
+		 * **broker** - Should match the MQTT broker you're running. Default should be OK if you're running it on the IoT Gateway itself.
+ * Go back to the application level by pressing **<** next to the **Central to Car** logo.
+ * Select flow **CarToCentral**
+	 * In **Receive MQTT Message 2**
+		 * **broker** - Should match the MQTT broker you're running. Default should be OK if you're running it on the IoT Gateway itself.
+	 * In **Send to Kafka**
+		 * **server** - Should match the paramters of your central Kafka server.
+	 * In **Send eFTL Message**
+		 * **server** - Should match the parameters of your central eFTL endpoint.
+
+ 8. Build the IoT Gateway app in flogo web:
  * Select the app **Flogo IoT Gateway**
  * Press the <kbd>**Build**</kbd> button
  * Select **ARM/Linux** from the dropdown menu
  * Wait for the flogo app to be compiled (can take a while)
  * Save the file as **iotgtw**
  
- 8. Make **iotgtw** executable. In a terminal:
+ 9. Make **iotgtw** executable. In a terminal:
  `chmod +x iotgtw`
  
