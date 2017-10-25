@@ -17,8 +17,25 @@ The Central Logic app contains 3 flows:
 	 - Stores Safety State in a Redis store
 
 ##Build the Central Logic app
+###Download the Flogo app description
+* Download the raw version of **central.json** from [here](central.json).
+
 ### Flogo Web
 The motions for  creating the central logic app in Flogo Web are similar to the ones described in the [IoT Gateway Flogo Web](../iot-gateway/flogo-web/) section.
+Check that section if you need to know how to perfrom the steps below.
+
+ - Make sure you have the following custom activities installed in Flogo Web (copy  the links below to install the activities in flogo web just like describe in the [Iot Gateway](../iot-gateway/flogo-web) section:
+	 - https://github.com/jvanderl/flogo-components/trigger/kafka
+	 - https://github.com/jvanderl/flogo-components/trigger/eftl
+	 - https://github.com/jvanderl/flogo-components/activity/splitpath
+	 - https://github.com/jvanderl/flogo-components/activity/replace
+	 - https://github.com/jvanderl/flogo-components/activity/combine
+	 - https://github.com/jvanderl/flogo-components/activity/redis
+	 - https://github.com/jvanderl/flogo-components/activity/getjson
+ - Import **central.json**
+ - 
 
 ### Flogo CLI
 The motions for  creating the central logic app in Flogo CLI are similar to the ones described in the [IoT Gateway Flogo CLI](../iot-gateway/flogo-cli/) section.
+
+* Download the raw version of **central.json** from [here](central.json).
