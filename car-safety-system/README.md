@@ -1,4 +1,5 @@
-﻿# Car Safety System
+# Car Safety System
+## Outline
 The on-board Car Safety System measures the actual distance to the car in front and determines the safety state; Too Close, Safe or Optimal. It is also capable of making the car keep optimal distance. Optimal is constructed of a local constant muliplied by a distance factor that can change when a message with a factor is received on MQTT from the IoT Gateway. The MQTT subject is constructed from "device'" and the MAC address of the ESP-12's WiFi chip.
 The basic logic flow is:
 

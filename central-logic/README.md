@@ -1,6 +1,7 @@
-﻿# Central Logic
+# Central Logic
 
-Just like the IoT Gateway described earlier, the central logic is also built as a    [Project Flogo](http://flogo.io) app.
+## Outline
+Just like the IoT Gateway described earlier, the central logic is also built as a [Project Flogo](http://flogo.io) app.
 
 This app will communicate with the IoT gateways, store real-time data from the car(s) into a Redis data store. It also is capable of receiving a road condition from the front-end, look up what distance factor is associated with the condition, and then forward the distance facor to the car(s). The effect will be that cars take more distance whenever a condition occurs (like fog, accident or sun glare). When everything's back to normal the cars will return to their normal optimal distance.
  
@@ -16,8 +17,8 @@ The Central Logic app contains 3 flows:
 	 - Reads messages coming from the IoT Gateway on the car over Kafka
 	 - Stores Safety State in a Redis store
 
-##Build the Central Logic app
-###Download the Flogo app description
+## Build the Central Logic app
+### Download the Flogo app description
 * Download the raw version of **central.json** from [here](central.json).
 
 ### Flogo Web

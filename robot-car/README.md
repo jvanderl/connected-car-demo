@@ -1,4 +1,4 @@
-﻿# Assembling the Robot Car
+# Assembling the Robot Car
 
 
 ## The Basics
@@ -36,7 +36,7 @@ These wires will also be run through to the top layer to be connected to the mai
 
 View from the front:
 ![Front view](front-view.png)
-###Main board
+### Install the main board
 Stick the mid-size breadboard on the top layer on the front side of the car. Follow the schematic above to install:
 
  - Place the **NodeMCU** controller on the board
