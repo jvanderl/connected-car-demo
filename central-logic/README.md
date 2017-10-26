@@ -34,8 +34,8 @@ Check that section if you need to know how to perfrom the steps below. You can r
 	 - https://github.com/jvanderl/flogo-components/activity/redis
 	 - https://github.com/jvanderl/flogo-components/activity/getjson
  - Import **central.json**
- - Adjust the configuration parameters the IoT Gateway app
-	 * Select app **IoT Cenral Logic**
+ - Adjust the configuration parameters
+	 * Select app **IoT Central Logic**
 	 * Select flow **Car Safety Central**
 		 * In **Receive eFTL Message**
 			 * **server** - Should match the central eFTL server parameters
