@@ -3,10 +3,6 @@ The IoT Gateway receives distance and safety state from the Car Safety System an
 It runs an Mosquitto MQTT broker to communicatie with the Car Safety System and a [Project Flogo](http://www.flogo.io/) app for the integration logic between car and central.
 All of this on a [C.H.I.P. computer](https://getchip.com/pages/chip) which is a $9  ARM based computer capable of running  a linux kernel, much like a Raspberry Pi.
 
-## Stick the IoT Gateway on the Robot Car
-I first got a [2-port USB Power bank](https://www.conrad.nl/nl/denver-10000-mah-powerbank-2-usb-poorten-pba-10001-1526214.html), and then put the C.H.I.P. on top of that so it looks something like this:
-![IoT Gateway on top of the powerbank](iot-gateway.png)
-
 ## Setup The IoT Gateway on the C.H.I.P.
 
 ### 1. Flash the C.H.I.P. with the headless kernel
@@ -36,3 +32,9 @@ There are two ways of doing this:
 You can use ssh command from another PC to start the IoT gateway:
 `ssh chip@[chip_ip] ~/iotgtw`
 
+## What's Next?
+Now you can choose to do one of the following:
+
+ - Assemble the complete [Robot Car](../robot-car)
+ - Create the [Demo Workspace](../workspace/)
+ - Test the communications in [Running the Demo](../running-the-demo/)
