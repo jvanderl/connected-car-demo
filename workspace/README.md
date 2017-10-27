@@ -3,7 +3,7 @@
 ## Outline
 In order to showcase the demo I wanted to have use a control workspace that would be easy to use but also easy for the audience to grasp the whole concept in one view.
 
-This is why I chose [Dizmo](https://www.dizmo.com/) as the tool of choice. Dizmo provides a scalable workspace that presents a set of digital gizmos (dizmos) that eacht perform a specific function. These dizmos can also interact with each other and exchange data.
+This is why I chose [Dizmo](https://www.dizmo.com/) as the tool of choice. Dizmo provides a scalable workspace that presents a set of digital gizmos (dizmos) that each perform a specific function. These dizmos can also interact with each other and exchange data.
 
 What I wanted to create was a control workspace that would:
 
