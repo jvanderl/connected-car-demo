@@ -88,6 +88,10 @@ Follow these step to put it all together:
 		* Goto the dizmo's **Settings**
 		* Select **Lock**
 
+## All Done!
+The finished workspace should look something like this:
+![Finished workspace](workspace.png)
+
 ## What's next?
 This is all that needs to be done on the preparations.
 Now you can start to [Run the Demo](../running-the-demo)!	
