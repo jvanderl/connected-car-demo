@@ -19,9 +19,10 @@ The setup consists of a couple of parts:
 
  - The [Car Safety System](car-safety-system/) based on a NodeMCU v3.0 ESP-12 Board
  - An on-board [IoT Gateway](iot-gateway/) running Project Flogo on a [C.H.I.P. computer](https://getchip.com/pages/chip)
- - Bring it all together on a standard 4-wheel [robot car](robot-car)
- - [Central Logic](central-logic/) using Project Flogo and a Redis Keystore
- - A [Control Workspace](workspace/) based on [Dizmo](https://www.dizmo.com/)
+ - The parts above mounted on a standard 4-wheel [robot car](robot-car) to create a moving demo
+ - [Central Infrastructure](central-infra) that hosts Messaging Servers and a Redis Keystore
+ - [Central Logic](central-logic/) running Project Flogo on the central machine
+ - A [Control Workspace](workspace/) based on [Dizmo](https://www.dizmo.com/) to interact with the systems and introduce different road conditions
 
 Together this look something like this:
 ![The complete setup](setup.png)
