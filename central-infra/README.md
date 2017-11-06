@@ -21,7 +21,7 @@ As eFTL is part of the FTL messaging suite, we will also install the Community E
 * Start FTL Realm Server:
 `docker run -d -p 13131:13131 -p 13134:13134 ftl-tibrealmserver:5.3.0 --client.url discover://`
 * Start FTL Agent:
-`docker run -d --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock -p 13139:13139 -p 13140:13140 ftl-tibagent:5.3.0 -rs http://<your_server_name>:13131`
+`docker run -d --restart=unless-stopped --add-host <your_server_name>:<your_server_IPAddress> -v /var/run/docker.sock:/var/run/docker.sock -p 13139:13139 -p 13140:13140 ftl-tibagent:5.3.0 -rs http://<your_server_name>:13131`
 
 ### Install TIBCO eFTL Community Edition
 * Get the eFTL Community Edition [here](https://www.tibco.com/products/tibco-eftl)
@@ -41,7 +41,7 @@ As eFTL is part of the FTL messaging suite, we will also install the Community E
 	* Enter Description **Load eFTL Config** and press <kbd>Deploy</kbd>
 * Start eFTL Server
 	* In a terminal: 
-	* `docker run --rm -d -p 9191:9191 ftl-tibeftlserver:3.3.0 -rs discover:// -l ws://*:9191`
+	* `docker run -d -p 9191:9191 --add-host <your_server_name>:<your_server_IPAddress> ftl-tibeftlserver:3.3.0 -rs discover:// -l ws://*:9191`
 
 ## Install Kafka Messaging
 The message system used by our "Insurance Company" uses [Kafka](https://kafka.apache.org/) as messaging protocol. Here's how to install. As I'm using a Mac, it's easiest to install Kafka using Homebrew. If you don't have it yet, install from [here](https://brew.sh/).

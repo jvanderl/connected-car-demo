@@ -38,9 +38,9 @@ The Dizmo workspace is hosted using the Dizmo Viewer. To get it:
 
 ### Download the custom Dizmos
 
-Download the IotCentral Dizmo <a href="iotcentral-0.0.0.dzm" download="iotcentral-0.0.0.dzm">here</a>
+Download the IotCentral Dizmo <a href="iotcentral-1.0.0.dzm" download="iotcentral-0.0.0.dzm">here</a>
 
-Download the IotCondition Dizmo <a href="iotcondition-0.0.0.dzm" download="iotcondition-0.0.0.dzm">here</a>
+Download the IotCondition Dizmo <a href="iotcondition-1.0.0.dzm" download="iotcondition-0.0.0.dzm">here</a>
 
 Download the images for 
 <a href="glare.jpg" download="glare.jpg">**glare**</a>, 
